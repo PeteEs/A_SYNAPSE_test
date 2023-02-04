@@ -5,7 +5,7 @@
 			"name": "ldw"
 		},
 		"content": {
-			"query": "USE nyc_taxi_ldw;\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'nyc_taxi_src')\n    CREATE EXTERNAL DATA SOURCE nyc_taxi_src\n    WITH\n    (\n        LOCATION     = 'https://synapsedlswsps.dfs.core.windows.net/nyc-taxi-data'\n    );",
+			"query": "USE nyc_taxi_ldw;\n\nIF NOT EXISTS (SELECT * FROM sys.external_data_sources WHERE name = 'nyc_taxi_data_ns') \n\tCREATE EXTERNAL DATA SOURCE nyc_taxi_data_ns\n\tWITH (\n\t\tLOCATION = 'abfss://nyc-taxi-data@synapsedlswsps.dfs.core.windows.net' \n\t)\nGO",
 			"metadata": {
 				"language": "sql"
 			},
