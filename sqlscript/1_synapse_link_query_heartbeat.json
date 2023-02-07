@@ -5,7 +5,7 @@
 			"name": "synapse_link"
 		},
 		"content": {
-			"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'synapse-course-cosmos-db-ps'))\n    CREATE CREDENTIAL [synapse-course-cosmos-db-ps]\n    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = 'fh6oPPhGq2sBOqJMGTnfcd2NYRdua6aQ88sD10zvQ7jptvzaNU87aL3L9eEZBpI6dkIKWUpbSEakACDbLzl1qA=='\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=synapse-course-cosmos-db-ps;Database=nyctaxidb',\n                OBJECT = 'Heartbeat',\n                SERVER_CREDENTIAL = 'synapse-course-cosmos-db-ps'\n) AS [Heartbeat]\n",
+			"query": "IF (NOT EXISTS(SELECT * FROM sys.credentials WHERE name = 'synapse-course-cosmos-db-ps'))\n    CREATE CREDENTIAL [synapse-course-cosmos-db-ps]\n    WITH IDENTITY = 'SHARED ACCESS SIGNATURE', SECRET = '*****'\nGO\n\nSELECT TOP 100 *\nFROM OPENROWSET(​PROVIDER = 'CosmosDB',\n                CONNECTION = 'Account=synapse-course-cosmos-db-ps;Database=nyctaxidb',\n                OBJECT = 'Heartbeat',\n                SERVER_CREDENTIAL = 'synapse-course-cosmos-db-ps'\n) AS [Heartbeat]\n",
 			"metadata": {
 				"language": "sql"
 			},
